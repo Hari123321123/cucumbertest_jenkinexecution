@@ -6,7 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="C:\\Users\\Admin\\eclipse-workspace\\Cucumber_BDD_Test2\\src\\test\\resources\\features",
+@CucumberOptions(features="C:\\Users\\Admin\\git\\localrepo\\BDD\\src\\test\\resources\\features",
 				 glue={"stepdefinitions","hooks"},
 				 publish=true,
 				 plugin={"pretty","html:target/CucumberReports/CucumberReport.html"},
