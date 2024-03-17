@@ -17,13 +17,13 @@ public class MyHooks {
 	WebDriver driver;
 
 	@Before
-	public void setup() {
+	public void setup() throws Throwable {
 		
 	
 		
 		Properties prop = new ConfigReader().intializeProperties();
 		driver = DriverFactory.initializeBrowser(prop.getProperty("browser"));
-		driver.get(prop.getProperty("url"));int s =prop.size();
+		driver.get(prop.getProperty("url1"));int s =prop.size();
 		System.out.println(s); 
 		
 	}
