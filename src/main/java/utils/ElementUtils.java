@@ -1,9 +1,13 @@
 package utils;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,9 +15,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.google.common.io.Files;
+
 public class ElementUtils {
 	
 	WebDriver driver;
+	
 	
 	public ElementUtils(WebDriver driver) {
 		
@@ -27,11 +35,22 @@ public class ElementUtils {
 		webElement.click();
 		
 	}
-	
+	public String takesscreenshot(WebDriver driver,ExtentReports reports) throws IOException {
+		File screenshotsource = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		  
+		  File screenshotfile = new File("D:\\l.png" );
+		  
+		  Files.copy(screenshotsource, screenshotfile);
+		  String path ="D://l.png";
+		 reports.createTest("login successfullly","adding screenshot")
+		  .addScreenCaptureFromPath(path,"loginpage");
+		
+		return path;
+	}
 	public void typeTextIntoElement(WebElement element,String textToBeTyped,long durationInSeconds) {
 		
 		WebElement webElement = waitForElement(element,durationInSeconds);
-		webElement.click();
+		
 		webElement.clear();
 		webElement.sendKeys(textToBeTyped);
 		
@@ -40,7 +59,7 @@ public class ElementUtils {
 	public WebElement waitForElement(WebElement element,long durationInSeconds) {
 		
 		WebElement webElement = null;
-		
+	
 		try {
 			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(durationInSeconds));
 			webElement = wait.until(ExpectedConditions.elementToBeClickable(element));
