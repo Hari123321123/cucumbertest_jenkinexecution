@@ -1,4 +1,4 @@
-@exe
+@test
 
 Feature: Registration functionality
 

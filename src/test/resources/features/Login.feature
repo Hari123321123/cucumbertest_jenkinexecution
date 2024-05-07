@@ -1,6 +1,6 @@
-
-Feature: Login functionality
 @test
+Feature: Login functionality
+
 Scenario Outline: Login with valid credentials
 Given User navigates to login page
 When User enters valid email address <username> into email field
