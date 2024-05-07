@@ -29,20 +29,20 @@ public class DriverFactory {
 		
 		
 		
-		System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");  
+	/*	System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");  
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
 		
 		DesiredCapabilities cp=new DesiredCapabilities();
 		cp.setCapability(ChromeOptions.CAPABILITY, options);
-        options.merge(cp);
+        options.merge(cp);*/
 		
 		
 		if(browserName.equals("chrome")) {
 			
 			//for browserstack
 			
-			/*System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");  
+			System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");  
 
 			DesiredCapabilities cp=new DesiredCapabilities();
 			cp.setBrowserName("chrome");
@@ -60,7 +60,7 @@ public class DriverFactory {
 			op.merge(cp1);
 			 driver = new RemoteWebDriver(new URL("http://192.168.142.251:4444"),op);
 			*/
-			driver = new ChromeDriver(options);
+			//driver = new ChromeDriver(options);
 			
 		}else if(browserName.equals("firefox")) {
 			
